@@ -1,4 +1,5 @@
-import {  CssBaseline, ThemeProvider, Typography } from "@mui/material";
+import {  CssBaseline, ThemeProvider } from "@mui/material";
+import Header from "./common/header/Header";
 import { theme } from "./Theme";
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 		<>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
-				<Typography  color="initial">My App</Typography>
+				<Header />
 			</ThemeProvider>
 		</>
     );

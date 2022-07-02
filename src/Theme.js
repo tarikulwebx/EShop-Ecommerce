@@ -1,12 +1,15 @@
 import { createTheme } from '@mui/material';
 
 export const theme = createTheme({
-    primary: {
-        
+    palette: {
+        primary: {
+            main: "#e33054"
+        },
+        secondary: {
+            main: "#19325c"
+        },
     },
-    secondary: {
 
-    },
     typography: {
         fontFamily: ['"Poppins"','sans-serif'].join(','),
     },
