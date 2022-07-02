@@ -1,9 +1,14 @@
+import {  CssBaseline, ThemeProvider, Typography } from "@mui/material";
+import { theme } from "./Theme";
 
 function App() {
     return (
-      <>
-        <h1>App</h1>
-      </>
+		<>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<Typography  color="initial">My App</Typography>
+			</ThemeProvider>
+		</>
     );
 }
 
