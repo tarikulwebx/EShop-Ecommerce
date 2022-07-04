@@ -1,10 +1,13 @@
-import { AppBar, styled, Toolbar, Typography, alpha, InputBase, Container, Box, IconButton, Badge, Avatar } from "@mui/material";
+import { AppBar, styled, Toolbar, Typography, alpha, InputBase, Container, Box, IconButton, Badge, Avatar, Menu, MenuItem } from "@mui/material";
 import React from 'react'
 import {
 	Search as SearchIcon,
 	ShoppingCart,
 	Favorite,
 } from "@mui/icons-material";
+import { grey } from "@mui/material/colors";
+
+const userMenuItems = ["Profile", "Account", "Dashboard", "Logout"];
 
 
 const Search = styled("div")(({ theme }) => ({
@@ -51,6 +54,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 const Middle = () => {
+	const [anchorElUser, setAnchorElUser] = React.useState(null);
+	const handleOpenUserMenu = (event) => {
+		setAnchorElUser(event.currentTarget);
+	};
+	const handleCloseUserMenu = () => {
+		setAnchorElUser(null);
+	};
 
     return (
 		<Box sx={{ flexGrow: 1 }}>
@@ -94,23 +104,69 @@ const Middle = () => {
 
 						{/* Cart, Wishlist, Profile */}
 						<Box sx={{ display: "flex", color: "#999" }}>
-							<IconButton
-								size="large"
-								color="inherit"
-								sx={{
-									padding: 0,
-                                    marginRight: "0.5rem",
-                                    "&:hover": {
-                                        backgroundColor: 'transparent !important'
-                                    }
-								}}
-							>
-								<Avatar
-									alt="Cindy Baker"
-									src="https://mui.com/static/images/avatar/3.jpg"
-									sx={{ width: 40, height: 40 }}
-								/>
-							</IconButton>
+							<Box sx={{ flexGrow: 1, display: "flex" }}>
+								<IconButton
+									size="large"
+									color="inherit"
+									sx={{
+										padding: 0,
+										marginRight: "0.5rem",
+										"&:hover": {
+											backgroundColor:
+												"transparent !important",
+										},
+									}}
+									aria-controls="menu-category"
+									aria-haspopup="true"
+									onClick={handleOpenUserMenu}
+								>
+									<Avatar
+										alt="Cindy Baker"
+										src="https://mui.com/static/images/avatar/3.jpg"
+										sx={{ width: 40, height: 40 }}
+									/>
+								</IconButton>
+								<Menu
+									sx={{ mt: "45px" }}
+									id="menu-appbar"
+									anchorEl={anchorElUser}
+									anchorOrigin={{
+										vertical: "top",
+										horizontal: "right",
+									}}
+									keepMounted
+									transformOrigin={{
+										vertical: "top",
+										horizontal: "right",
+									}}
+									open={Boolean(anchorElUser)}
+									onClose={handleCloseUserMenu}
+								>
+									{userMenuItems.map((item, i) => (
+										<MenuItem
+											key={i}
+											onClick={handleCloseUserMenu}
+											sx={{
+												color: grey[700],
+												textTransform: "capitalize",
+												"&:hover, &.active": {
+													color: "primary.main",
+													backgroundColor: (theme) =>
+														alpha(
+															theme.palette
+																.primary.main,
+															0.04
+														),
+												},
+											}}
+										>
+											<Typography textAlign="center">
+												{item}
+											</Typography>
+										</MenuItem>
+									))}
+								</Menu>
+							</Box>
 							<IconButton
 								size="large"
 								aria-label="show 4 new mails"
@@ -124,7 +180,9 @@ const Middle = () => {
 								size="large"
 								aria-label="show 17 new notifications"
 								color="inherit"
-                                sx={{ display: {xs: 'none', md: 'inline-flex'} }}
+								sx={{
+									display: { xs: "none", md: "inline-flex" },
+								}}
 							>
 								<Badge badgeContent={8} color="error">
 									<Favorite />
