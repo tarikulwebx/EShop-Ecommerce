@@ -147,6 +147,7 @@ const Middle = () => {
 											key={i}
 											onClick={handleCloseUserMenu}
 											sx={{
+												fontSize: '0.975rem',
 												color: grey[700],
 												textTransform: "capitalize",
 												"&:hover, &.active": {
@@ -160,7 +161,7 @@ const Middle = () => {
 												},
 											}}
 										>
-											<Typography textAlign="center">
+											<Typography textAlign="center" fontSize="inherit">
 												{item}
 											</Typography>
 										</MenuItem>

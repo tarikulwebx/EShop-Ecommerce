@@ -3,9 +3,36 @@ import { alpha, AppBar, Box, Button, Container, IconButton, ListItemIcon, Menu, 
 import { grey } from '@mui/material/colors';
 import React from 'react'
 import { FaBaby, FaGamepad, FaGifts, FaPlug, FaTshirt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
-const pages = ["Home", "pages", "User Account", "Track My Order", "Contact"];
+const pages = [
+	{
+		title: "Home",
+		to: "/",
+	},
+	{
+		title: "pages",
+		to: "",
+	},
+	{
+		title: "User Account",
+		to: "",
+	},
+	{
+		title: "Track My Order",
+		to: "",
+	},
+	{
+		title: "Contact",
+		to: "",
+	},
+	{
+		title: "About",
+		to: "/about",
+	},
+];
+
 const categories = [
     {
         name: "Fashion",
@@ -56,7 +83,11 @@ const Navbar = () => {
 		<AppBar
 			position="static"
 			elevation={0}
-			sx={{ backgroundColor: "white" }}
+			sx={{
+				backgroundColor: "white",
+				pb: 1.5,
+				boxShadow: "0 4px 4px -2px" + grey[200],
+			}}
 		>
 			<Container maxWidth="xl">
 				<Toolbar
@@ -100,7 +131,7 @@ const Navbar = () => {
 								onClose={handleCloseCategoryMenu}
 								sx={{
 									display: "block",
-                                    marginTop: 0.6,
+									marginTop: 0.6,
 								}}
 							>
 								{categories.map((category, i) => (
@@ -129,7 +160,9 @@ const Navbar = () => {
 										<ListItemIcon>
 											{category.icon}
 										</ListItemIcon>
-										<Typography textAlign="center">
+										<Typography
+											sx={{ fontSize: "0.975rem" }}
+										>
 											{category.name}
 										</Typography>
 									</MenuItem>
@@ -147,8 +180,10 @@ const Navbar = () => {
 						>
 							{pages.map((page) => (
 								<Button
-									key={page}
-									className={page === "Home" ? "active" : ""}
+									key={page.title}
+									className={
+										page.title === "Home" ? "active" : ""
+									}
 									onClick={handleCloseNavMenu}
 									sx={{
 										ml: 1,
@@ -170,8 +205,10 @@ const Navbar = () => {
 											color: "primary.main",
 										},
 									}}
+									component={Link}
+									to={page.to}
 								>
-									{page}
+									{page.title}
 								</Button>
 							))}
 						</Box>
@@ -213,10 +250,12 @@ const Navbar = () => {
 							>
 								{pages.map((page) => (
 									<MenuItem
-										key={page}
+										key={page.title}
 										onClick={handleCloseNavMenu}
 										className={
-											page === "Home" ? "active" : ""
+											page.title === "Home"
+												? "active"
+												: ""
 										}
 										sx={{
 											color: grey[700],
@@ -231,9 +270,11 @@ const Navbar = () => {
 													),
 											},
 										}}
+										component={Link}
+										to={page.to}
 									>
 										<Typography textAlign="center">
-											{page}
+											{page.title}
 										</Typography>
 									</MenuItem>
 								))}
