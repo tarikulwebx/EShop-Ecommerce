@@ -1,4 +1,4 @@
-import { AppBar, styled, Toolbar, Typography, alpha, InputBase, Container, Box, IconButton, Badge, Avatar, Menu, MenuItem } from "@mui/material";
+import { AppBar, styled, Toolbar, Typography, alpha, InputBase, Container, Box, IconButton, Badge, Avatar, Menu, MenuItem, useScrollTrigger } from "@mui/material";
 import React from 'react'
 import {
 	Search as SearchIcon,
@@ -6,6 +6,7 @@ import {
 	Favorite,
 } from "@mui/icons-material";
 import { grey } from "@mui/material/colors";
+import PropTypes from "prop-types";
 
 const userMenuItems = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -52,8 +53,36 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
+// Elevation Scroll
+function ElevationScroll(props) {
+	const { children, window } = props;
+	// Note that you normally won't need to set the window ref as useScrollTrigger
+	// will default to window.
+	// This is only being set here because the demo is in an iframe.
+	const trigger = useScrollTrigger({
+		disableHysteresis: true,
+		threshold: 90,
+		target: window ? window() : undefined,
+	});
 
-const Middle = () => {
+	return React.cloneElement(children, {
+		elevation: trigger ? 1 : 0,
+	});
+}
+
+
+ElevationScroll.propTypes = {
+	children: PropTypes.element.isRequired,
+	/**
+	 * Injected by the documentation to work in an iframe.
+	 * You won't need it on your project.
+	 */
+	window: PropTypes.func,
+};
+
+
+
+const Middle = (props) => {
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const handleOpenUserMenu = (event) => {
 		setAnchorElUser(event.currentTarget);
@@ -63,9 +92,9 @@ const Middle = () => {
 	};
 
     return (
-		<Box sx={{ flexGrow: 1 }}>
+		<ElevationScroll {...props}>
 			<AppBar
-				position="static"
+				position="sticky"
 				elevation={0}
 				sx={{ backgroundColor: "white", py: 1 }}
 			>
@@ -147,7 +176,7 @@ const Middle = () => {
 											key={i}
 											onClick={handleCloseUserMenu}
 											sx={{
-												fontSize: '0.975rem',
+												fontSize: "0.975rem",
 												color: grey[700],
 												textTransform: "capitalize",
 												"&:hover, &.active": {
@@ -161,7 +190,10 @@ const Middle = () => {
 												},
 											}}
 										>
-											<Typography textAlign="center" fontSize="inherit">
+											<Typography
+												textAlign="center"
+												fontSize="inherit"
+											>
 												{item}
 											</Typography>
 										</MenuItem>
@@ -193,7 +225,7 @@ const Middle = () => {
 					</Toolbar>
 				</Container>
 			</AppBar>
-		</Box>
+		</ElevationScroll>
 	);
 }
 

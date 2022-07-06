@@ -4,7 +4,7 @@ import React from 'react'
 const Hero = () => {
     return (
 		<Box component="section" sx={{}}>
-			<Container maxWidth="xl">
+			<Container maxWidth="xl" sx={{ minHeight: "800px" }}>
 				Hero
 			</Container>
 		</Box>
