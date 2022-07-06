@@ -3,6 +3,7 @@ import { grey } from '@mui/material/colors';
 import React from 'react'
 import PlayStoreImageIcon from "../../images/playstore-icon.png";
 import AppStoreImageIcon from "../../images/apple_appstore_icon.png";
+import CopyrightFooter from './CopyrightFooter';
 
 const shop_menu_items = [
     {
@@ -66,9 +67,9 @@ const Footer = () => {
     return (
 		<Box
 			component="footer"
-			sx={{ backgroundColor: "secondary.light", color: "white", py: 7 }}
+			sx={{ backgroundColor: "secondary.light", color: "white" }}
 		>
-			<Container maxWidth="xl">
+			<Container maxWidth="xl" sx={{ py: 7 }}>
 				<Grid container rowSpacing={4} columnSpacing={3}>
 					{/* Grid 1 */}
 					<Grid item xs={12} sm={6} lg={3}>
@@ -108,7 +109,7 @@ const Footer = () => {
 								color: grey[100],
 								mr: 2,
 								py: 1,
-								mb: 1.25
+								mb: 1.25,
 							}}
 						>
 							Google Play
@@ -126,7 +127,7 @@ const Footer = () => {
 								textTransform: "capitalize",
 								color: grey[100],
 								py: 1,
-								mb: 1.25
+								mb: 1.25,
 							}}
 						>
 							App Store
@@ -262,6 +263,8 @@ const Footer = () => {
 					</Grid>
 				</Grid>
 			</Container>
+
+			<CopyrightFooter />
 		</Box>
 	);
 }
