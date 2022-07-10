@@ -57,7 +57,7 @@ const FlashSells = () => {
 				viewLink="about"
 			/>
 			<Container maxWidth="xl">
-				<Box sx={{ position: "relative", ".slick-slider": {margin: "0 -15px"}, ".slick-slide>div": {margin: "0 15px"}, ".slick-prev": {left: 0, zIndex: "1"}, ".slick-next": {right: 0} }}>
+				{/* <Box sx={{ position: "relative", ".slick-slider": {margin: "0 -15px"}, ".slick-slide>div": {margin: "0 15px"}, ".slick-prev": {left: 0, zIndex: "1"}, ".slick-next": {right: 0} }}>
 					<Slider {...settings}>
 						<Box>
                             <Typography variant="h1" color="initial" sx={{ backgroundColor: "red" }}>1</Typography>
@@ -87,7 +87,7 @@ const FlashSells = () => {
                         
                         
 					</Slider>
-				</Box>
+				</Box> */}
 			</Container>
 		</Box>
 	);

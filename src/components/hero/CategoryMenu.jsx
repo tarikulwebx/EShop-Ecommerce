@@ -41,6 +41,38 @@ const categories = [
 		name: "Baby Toys",
 		icon: <FaBaby />,
 	},
+    {
+		name: "Gifts",
+		icon: <FaGifts />,
+	},
+	{
+		name: "Baby Toys",
+		icon: <FaBaby />,
+	},
+    {
+		name: "Gifts",
+		icon: <FaGifts />,
+	},
+	{
+		name: "Baby Toys",
+		icon: <FaBaby />,
+	},
+    {
+		name: "Gifts",
+		icon: <FaGifts />,
+	},
+	{
+		name: "Baby Toys",
+		icon: <FaBaby />,
+	},
+    {
+		name: "Gifts",
+		icon: <FaGifts />,
+	},
+	{
+		name: "Baby Toys",
+		icon: <FaBaby />,
+	},
     
 ];
 
@@ -50,7 +82,7 @@ const CategoryMenu = () => {
 			elevation={2}
 			sx={{
 				borderRadius: 3,
-				minWidth: "220px",
+				minWidth: "240px",
 				".simplebar-track.simplebar-vertical": {
 					width: "8px",
 				},
@@ -62,10 +94,10 @@ const CategoryMenu = () => {
 						theme.palette.secondary.light +
 						")",
 				},
-				display: { xs: "none", md: "block" },
+				display: { xs: "none", md: "block", position: 'relative' },
 			}}
 		>
-			<SimpleBar style={{ height: "400px" }}>
+			<SimpleBar style={{ height: "100%", position: "absolute", top: 0, bottom: 0, left: 0, right: 0 }}>
 				<List
 					sx={{
 						minWidth: "220px",
@@ -98,7 +130,7 @@ const CategoryMenu = () => {
 										minWidth: 0,
 										mr: 2.5,
 										fontSize: "1.125rem",
-										color: grey[600],
+										color: "primary.light",
 									}}
 								>
 									{category.icon}
