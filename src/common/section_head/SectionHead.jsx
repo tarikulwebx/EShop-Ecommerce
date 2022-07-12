@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const SectionHead = ({title="", icon="", viewLink=""}) => {
     return (
-		<Container maxWidth="xl" sx={{ mb: 1 }}>
+		<Container maxWidth="xl" sx={{ mb: 2 }}>
 			<Stack
 				direction="row"
 				alignItems="center"

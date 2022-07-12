@@ -32,7 +32,9 @@ const HeroSlider = () => {
 		dots: true,
 		arrows: false,
 		infinite: true,
-		speed: 500,
+		autoplay: true,
+		autoplaySpeed: 4000,
+		speed: 1000,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		appendDots: (dots) => (

@@ -1,11 +1,11 @@
 import React from 'react'
-import FlashSells from '../components/flash_sells/FlashSells'
+import FlashSellSection from '../components/flash_sell_section/FlashSell_section'
 import Hero from "../components/hero/Hero"
 const Home = () => {
   return (
     <>
       <Hero />
-      <FlashSells />
+      <FlashSellSection />
     </>
   )
 }

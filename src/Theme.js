@@ -1,4 +1,5 @@
-import { createTheme } from '@mui/material';
+import { alpha, createTheme, experimental_sx as sx } from '@mui/material';
+import { blue } from '@mui/material/colors';
 
 export const theme = createTheme({
     palette: {
@@ -8,9 +9,22 @@ export const theme = createTheme({
         secondary: {
             main: "#19325c"
         },
+        blue_background: {
+            main: alpha(blue[100], 0.15)
+        }
     },
 
     typography: {
         fontFamily: ['"Poppins"','sans-serif'].join(','),
     },
+
+    components: {
+        MuiContainer: {
+            styleOverrides: {
+                root: sx({
+                    px: {md: "2rem !important", lg: "3rem !important", xl: "4rem !important"},
+                })
+            }
+        }
+    }
 });
