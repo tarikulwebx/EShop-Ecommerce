@@ -6,7 +6,7 @@ const CategoryItem = ({category}) => {
 	const images = category.images;
 
     return (
-		<Paper sx={{ p: 2, borderRadius: "0.5rem" }}>
+		<Paper sx={{ borderRadius: "0.5rem", overflow: "hidden", p: 2 }}>
 			<Box sx={{ position: "relative" }}>
 				<Grid container>
 					{images.map((image, i) => (
