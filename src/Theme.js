@@ -25,6 +25,14 @@ export const theme = createTheme({
                     px: {md: "2rem !important", lg: "3rem !important", xl: "4rem !important"},
                 })
             }
+        },
+
+        MuiCssBaseline: {
+            styleOverrides: (themeParam) => ({
+                body: {
+                    backgroundColor: alpha(blue[100], 0.15)
+                }
+            })
         }
     }
 });

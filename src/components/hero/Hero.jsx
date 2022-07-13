@@ -6,7 +6,7 @@ import HeroSlider from './HeroSlider';
 
 const Hero = () => {
     return (
-		<Box component="section" sx={{ py: 3 }}>
+		<Box component="section" sx={{ py: 3, backgroundColor: "#fff" }}>
 			<Container maxWidth="xl">
 				<Box sx={{ display: "flex", gap: 3 }}>
 					<CategoryMenu />

@@ -81,12 +81,13 @@ const Navbar = () => {
 
     return (
 		<AppBar
-			position="static"
+			position="relative"
 			elevation={0}
+			component="div"
 			sx={{
 				backgroundColor: "white",
 				pb: 1.5,
-				boxShadow: "0 4px 4px -2px" + grey[200],
+				boxShadow: "0 4px 4px -2px " + grey[100],
 			}}
 		>
 			<Container maxWidth="xl">

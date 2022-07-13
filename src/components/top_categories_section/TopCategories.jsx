@@ -1,75 +1,43 @@
-import { FlashOn } from '@mui/icons-material';
-import {  alpha, Box, Container } from '@mui/material'
+import { Apps } from '@mui/icons-material'
+import { alpha, Box, Container } from '@mui/material'
 import React from 'react'
-import Slider from "react-slick";
+import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import SectionHead from "../../common/section_head/SectionHead"
-import ProductItem from "./ProductItem";
+import CategoryItem from './CategoryItem';
 
-import ProductImg1 from "../../images/products/product_1.jpg"
-import ProductImg2 from "../../images/products/product_2.jpg"
-import ProductImg7 from "../../images/products/product_7.jpg"
-import ProductImg8 from "../../images/products/product_8.jpg"
+import PrevIcon from "../../images/icons/prev_icon.svg";
+import NextIcon from "../../images/icons/next_icon.svg";
+
+import ProductImg1 from "../../images/products/product_7.jpg"
+import ProductImg2 from "../../images/products/product_5.jpg"
+import ProductImg3 from "../../images/products/product_4.jpg"
 
 
-import PrevIcon from "../../images/icons/prev_icon.svg"
-import NextIcon from "../../images/icons/next_icon.svg"
-
-const products = [
+const categories = [
 	{
-		name: "Ipsum takimata amet ut et",
-		thumbnail: ProductImg1,
-		avg_rating: "2.5",
-		price: "200",
-		off_percent: "50"
+		name: "Diamond",
+		total_monthly_order: "3k",
+		images: [ProductImg1, ProductImg2, ProductImg3],
 	},
 	{
-		name: "Et et est invidunt",
-		thumbnail: ProductImg2,
-		avg_rating: "5",
-		price: "180",
-		off_percent: "70"
+		name: "Shoe",
+		total_monthly_order: "4k",
+		images: [ProductImg1, ProductImg2, ProductImg3],
 	},
 	{
-		name: "Et et est invidunt",
-		thumbnail: ProductImg7,
-		avg_rating: "5",
-		price: "180",
-		off_percent: "70"
+		name: "Beauty",
+		total_monthly_order: "10k",
+		images: [ProductImg1, ProductImg2, ProductImg3],
 	},
-	{
-		name: "Et et est invidunt",
-		thumbnail: ProductImg8,
-		avg_rating: "5",
-		price: "180",
-		off_percent: "70"
+    {
+		name: "Cloth",
+		total_monthly_order: "10k",
+		images: [ProductImg1, ProductImg2, ProductImg3],
 	},
-	{
-		name: "Et et est invidunt",
-		thumbnail: ProductImg2,
-		avg_rating: "5",
-		price: "180",
-		off_percent: "70"
-	},
-	{
-		name: "Et et est invidunt",
-		thumbnail: ProductImg7,
-		avg_rating: "5",
-		price: "180",
-		off_percent: "70"
-	},
-	{
-		name: "Et et est invidunt",
-		thumbnail: ProductImg8,
-		avg_rating: "5",
-		price: "180",
-		off_percent: "70"
-	},
-	
+    
 ];
-
 
 function SliderPrevArrow(props) {
 	const { className, style, onClick } = props;
@@ -143,34 +111,27 @@ function SliderNextArrow(props) {
 	);
 }
 
-
 const settings = {
 	dots: false,
 	arrows: true,
 	infinity: true,
 	autoplay: true,
 	speed: 1500,
-	autoplaySpeed: 2500,
-	slidesToShow: 4,
-	slidesToScroll: 1,
+	autoplaySpeed: 2800,
 	prevArrow: <SliderPrevArrow />,
 	nextArrow: <SliderNextArrow />,
+	slidesToShow: 3,
+	slidesToScroll: 1,
 	responsive: [
 		{
 			breakpoint: 1200,
-			settings: {
-				slidesToShow: 3,
-			},
-		},
-		{
-			breakpoint: 900,
 			settings: {
 				arrows: false,
 				slidesToShow: 2,
 			},
 		},
 		{
-			breakpoint: 480,
+			breakpoint: 900,
 			settings: {
 				arrows: false,
 				slidesToShow: 1,
@@ -179,15 +140,13 @@ const settings = {
 	],
 };
 
-
-const FlashSells = () => {
-
+const TopCategories = () => {
     return (
 		<Box component="section">
 			<SectionHead
-				title="Flash Sells"
-				icon={<FlashOn color="primary" />}
-				viewLink="about"
+				title="Top Categories"
+				icon={<Apps color="primary" />}
+				viewLink=""
 			/>
 			<Container maxWidth="xl">
 				<Box
@@ -197,12 +156,23 @@ const FlashSells = () => {
 							margin: "0 -10px",
 							overflow: "hidden",
 						},
+                        ".slick-arrow": {
+                            opacity: 0,
+                            visibility: "hidden",
+                            transition: "0.23s"
+                        },
+                        "&:hover": {
+                            ".slick-arrow": {
+                                opacity: 1,
+                                visibility: "visible"
+                            }
+                        }
 					}}
 				>
 					<Slider {...settings}>
-						{products.map((product, index) => (
+						{categories.map((category, index) => (
 							<Box key={index}>
-								<ProductItem product={product} />
+								<CategoryItem category={category} />
 							</Box>
 						))}
 					</Slider>
@@ -212,4 +182,4 @@ const FlashSells = () => {
 	);
 }
 
-export default FlashSells
+export default TopCategories
