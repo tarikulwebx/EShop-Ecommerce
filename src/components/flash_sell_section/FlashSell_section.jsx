@@ -197,6 +197,17 @@ const FlashSells = () => {
 							margin: "0 -10px",
 							overflow: "hidden",
 						},
+						".slick-arrow": {
+							opacity: 0,
+							visibility: "hidden",
+							transition: "0.23s",
+						},
+						"&:hover": {
+							".slick-arrow": {
+								opacity: 1,
+								visibility: "visible",
+							},
+						},
 					}}
 				>
 					<Slider {...settings}>

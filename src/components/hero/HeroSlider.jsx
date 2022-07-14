@@ -1,4 +1,4 @@
-import { Avatar, Box, Link } from '@mui/material';
+import { Avatar, Box, Link, Skeleton } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import React from 'react'
 import Slider from 'react-slick';
@@ -61,12 +61,28 @@ const HeroSlider = () => {
     return (
 		<Box sx={{ width: "100%", overflow: "hidden" }}>
 			<Slider {...SliderSettings}>
-				{SliderImages.map((slide, index) => (
-					<Link href={slide.link} key={index}> 
-						<Avatar src={slide.image} alt="slider" variant='square' sx={{ width: "100%",height: "100%" }} />
-					</Link>
-				))}
+				{SliderImages &&
+					SliderImages.map((slide, index) => (
+						<Link href={slide.link} key={index}>
+							<Avatar
+								src={slide.image}
+								alt="slider"
+								variant="square"
+								sx={{ width: "100%", height: "100%" }}
+							/>
+						</Link>
+					))}
 
+				{!SliderImages &&
+					[1, 2].map((n) => (
+						<Skeleton
+							key={n}
+							variant="rectangular"
+							width="100%"
+							height={400}
+							animation="wave"
+						/>
+					))}
 			</Slider>
 		</Box>
 	);
